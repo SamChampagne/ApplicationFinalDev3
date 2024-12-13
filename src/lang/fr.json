@@ -1,0 +1,17 @@
+{
+    "loading": "Chargement...",
+    "errorFetchingRecipe": "Erreur lors de la récupération de la recette",
+    "noRecipeFound": "Aucune recette trouvée",
+    "generalInfo": "Informations générales",
+    "prepTime": "Temps de préparation",
+    "cookTime": "Temps de cuisson",
+    "portions": "Portions",
+    "author": "Auteur",
+    "creationDate": "Date de création",
+    "ingredients": "Ingrédients",
+    "steps": "Étapes",
+    "delete": "Supprimer",
+    "modify": "Modifier",
+    "confirmDelete": "Êtes-vous sûr de vouloir supprimer cette recette ?",
+    "recipeDeleted": "Recette supprimée avec succès !"
+  }

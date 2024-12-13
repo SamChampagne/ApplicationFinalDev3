@@ -1,0 +1,59 @@
+body, html {
+  margin: 0;
+  padding: 0;
+  height: 100%; /* Assure que le body et html prennent toute la hauteur */
+  width: 100%; /* Assure que le body et html prennent toute la largeur */
+}
+
+#root {
+  width: 100%; /* Utiliser 100% pour la largeur */
+  height: 100vh; /* Utiliser 100vh pour la hauteur */
+  padding: 0; /* Retirer le padding */
+  text-align: center;
+  display: flex; /* Pour centrer le contenu, si nécessaire */
+  flex-direction: column; /* Pour disposer le contenu en colonne */
+}
+
+.logo {
+  height: 6em;
+  padding: 1.5em;
+  will-change: filter;
+  transition: filter 300ms;
+}
+
+.logo:hover {
+  filter: drop-shadow(0 0 2em #646cffaa);
+}
+.logo.react:hover {
+  filter: drop-shadow(0 0 2em #61dafbaa);
+}
+
+@keyframes logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  a:nth-of-type(2) .logo {
+    animation: logo-spin infinite 20s linear;
+  }
+}
+
+.card {
+  padding: 2em;
+  flex: 1; /* Pour faire en sorte que les cartes prennent de l'espace */
+}
+
+.read-the-docs {
+  color: #888;
+}
+
+/* Ajout d'un style pour le fond */
+.bg-gray-100 {
+  background-color: #f7fafc; /* Couleur de fond gris clair */
+  height: 100%; /* S'assurer que le fond prend toute la hauteur */
+}
