@@ -3,16 +3,21 @@ import Navigation from './barNavigation';
 import { IRecette } from '../model/recette';
 import { getRecetteByTitle } from '../services/apiService';
 
+// Composant qui s'occupe de la recherche par titre
 const RechercheRecette = () => {
+
+    // initialisation des variables
     const [searchTerm, setSearchTerm] = useState("");
     const [result, setResult] = useState<IRecette | null>(null);
     const [isLoading, setIsLoading] = useState(false);
     const [error, setError] = useState<string | null>(null);
 
+    // Gestion du changement de la barre de recherche
     const handleSearchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         setSearchTerm(event.target.value);
     };
 
+    // Soumission de la recherche
     const handleSearchClick = async () => {
         if (!searchTerm.trim()) {
             setError("Veuillez entrer un titre pour effectuer la recherche.");

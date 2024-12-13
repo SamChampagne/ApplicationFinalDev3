@@ -4,11 +4,14 @@ import { useNavigate } from 'react-router-dom';
 import { trouverParEmail } from '../services/apiService'; // Assurez-vous que la fonction existe
 
 const Inscription = () => {
+
+    // Initiation des variables
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [errorMessage, setErrorMessage] = useState(''); // Pour afficher les erreurs
     const navigate = useNavigate();
 
+    // Gestion de l'inscription
     const handleInscription = async (e: React.FormEvent) => {
         e.preventDefault();
 
@@ -32,7 +35,7 @@ const Inscription = () => {
             return;
         }
 
-        setErrorMessage(''); // Réinitialiser le message d'erreur
+        setErrorMessage(''); 
 
         // Si tout est valide, on continue l'inscription
         const newUtilisateur = {

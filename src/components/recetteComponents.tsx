@@ -1,6 +1,7 @@
 
 import { IRecette } from '../model/recette';
 
+// Composant qui affiche les carte des recettes
 const RecetteComponent = (props: IRecette) => {
     const { titre, tempsPreparation, portions, _id } = props;
     console.log(titre)

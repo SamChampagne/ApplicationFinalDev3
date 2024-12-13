@@ -1,5 +1,6 @@
 import { jwtDecode } from "jwt-decode";
 
+// Méthode qui décode le jeton et récupère les informations
 export function jwtDecodage(token: string): string[] {
 
     const result = jwtDecode(token)

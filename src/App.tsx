@@ -6,7 +6,7 @@ import RechercheRecette from './components/RechercheAffichage';
 import Login from './components/Login';
 import Inscription from './components/Inscription';
 
-
+// Coeur de l'application et des routes
 const App = () => {
   return (
     <>

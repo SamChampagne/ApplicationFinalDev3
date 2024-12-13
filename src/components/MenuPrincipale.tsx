@@ -5,10 +5,12 @@ import { IRecette } from '../model/recette';
 import Navigation from './barNavigation';
 
 const MenuPrincipale = () => {
+  // Initialisation des variables
   const [recettes, setRecettes] = useState<IRecette[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
+  // On récupère toute les recettes
   useEffect(() => {
     getRecettes()
       .then((data) => {

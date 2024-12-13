@@ -2,42 +2,46 @@ import { useEffect, useState } from "react";
 import { jwtDecodage } from "../services/jwtDecode";
 import { useNavigate } from "react-router-dom";
 
+
+// Component de navigation
 const Navigation = () => {
-  const navigate = useNavigate();
-  const [nom, setNom] = useState<string>("");
-  const [estLogin, setLogin] = useState<boolean>(false);
 
-  // Vérifie si l'utilisateur est connecté
-  const isLoggedIn = () => {
+    // Initialisation des variables
+    const navigate = useNavigate();
+    const [nom, setNom] = useState<string>("");
+    const [estLogin, setLogin] = useState<boolean>(false);
+
+    // Vérifie si l'utilisateur est connecté
+    const isLoggedIn = () => {
     setLogin(localStorage.getItem("token") !== null);
-  };
+    };
 
-  // Fonction de déconnexion
-  const handleDeconnexion = () => {
-    localStorage.removeItem("token"); // Retirer le token de localStorage
-    setLogin(false); // Mettre à jour l'état estLogin
-    setNom(""); // Réinitialiser le nom
-    navigate("/login"); // Rediriger vers la page de connexion
-  };
+    // Fonction de déconnexion
+    const handleDeconnexion = () => {
+      localStorage.removeItem("token"); 
+      setLogin(false); 
+      setNom(""); 
+      navigate("/login");
+    };
 
-  // Vérifie l'état de la connexion au montage du composant
-  useEffect(() => {
+   // Vérifie l'état de la connexion au montage du composant
+    useEffect(() => {
     isLoggedIn();
-  }, []); // Se lance une seule fois au début
+    }, []); 
 
-  // Mise à jour du nom après la connexion
-  useEffect(() => {
-    if (estLogin) {
-      const token = localStorage.getItem("token");
-      if (token) {
-        const result: string[] = jwtDecodage(token);
-        console.log("Console log du token: " + result);
-        setNom(result[0]); // Assurez-vous de récupérer le bon élément du token
+    // Mise à jour du nom après la connexion
+    useEffect(() => {
+      if (estLogin) {
+        const token = localStorage.getItem("token");
+        if (token) {
+          const result: string[] = jwtDecodage(token);
+          console.log("Console log du token: " + result);
+          setNom(result[0]);
+        }
+      } else {
+        setNom(""); 
       }
-    } else {
-      setNom(""); // Si non connecté, réinitialiser le nom
-    }
-  }, [estLogin]); // Se lance chaque fois que estLogin change
+    }, [estLogin]); 
 
   return (
     <aside className="w-1/6 min-h-screen bg-gray-800 text-white flex flex-col p-4">

@@ -4,6 +4,8 @@ import { ajouterRecettes } from '../services/apiService';
 import { useNavigate } from "react-router-dom";
 
 const FormulaireAjout = () => {
+
+    // Initiation des vrariables
     const [titre, setTitre] = useState('');
     const [ingredients, setIngredients] = useState<IIngredient[]>([]);
     const [etapes, setEtapes] = useState<IEtape[]>([]);
@@ -17,6 +19,7 @@ const FormulaireAjout = () => {
         setIngredients([...ingredients, { nom: '', quantite: '', _id: `${Date.now()}` }]);
     };
 
+    // Quand un ingrédient change
     const handleIngredientChange = (index: number, field: keyof IIngredient, value: string) => {
         const newIngredients = ingredients.map((ingredient, i) =>
             i === index ? { ...ingredient, [field]: value } : ingredient
@@ -24,10 +27,12 @@ const FormulaireAjout = () => {
         setIngredients(newIngredients);
     };
 
+    // Quand on ajoute une étape
     const handleAddEtape = () => {
         setEtapes([...etapes, { description: '', ordre: etapes.length + 1, _id: `${Date.now()}` }]);
     };
 
+    // Quand on change une étape
     const handleEtapeChange = (index: number, value: string) => {
         const newEtapes = etapes.map((etape, i) =>
             i === index ? { ...etape, description: value } : etape
@@ -35,6 +40,7 @@ const FormulaireAjout = () => {
         setEtapes(newEtapes);
     };
 
+    // La soumission du formulaire
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
         const newRecette = {

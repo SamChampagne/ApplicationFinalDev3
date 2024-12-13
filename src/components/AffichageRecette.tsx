@@ -6,8 +6,9 @@ import FormulaireModification from './FormModification';
 import Popup from './Popup';
 import NavigationBar from './barNavigation'
 
+// Composant qui affiche les détails d'une recette
 const AffichageRecette = () => {
-    
+    // Initialisation des variables 
     const { id } = useParams<{ id: string }>();
     const [recette, setRecette] = useState<IRecette | null>(null);
     const [loading, setLoading] = useState(true);
@@ -17,25 +18,29 @@ const AffichageRecette = () => {
     const [popupMessage, setPopupMessage] = useState(''); 
     const navigate = useNavigate();
     const [showFormModification, setShowFormModification] = useState(false);
+
+    // Gestion de la suppression et du popup
     const handleSuppression = () => {
         setPopupMessage("Êtes-vous sûr de vouloir supprimer cette recette ?");
         setPopupType(2); 
         setShowPopup(true); 
     };
 
+    // Gestion de la confirmation de suppression
     const confirmSuppression = async () => {
         try {
             await supprimerRecette(id!);
             alert("Recette supprimée avec succès !");
-            navigate('/'); // Redirige vers la page d'accueil après suppression
+            navigate('/'); 
         } catch (err) {
             console.error("Erreur lors de la suppression de la recette :", err);
             setError("Erreur lors de la suppression de la recette");
         } finally {
-            setShowPopup(false); // Fermer le popup après l'action
+            setShowPopup(false); 
         }
     };
 
+    // Chargement de la recette séléctionnée
     useEffect(() => {
         const fetchRecette = async () => {
             try {
@@ -59,6 +64,7 @@ const AffichageRecette = () => {
         fetchRecette();
     }, [id]);
 
+    // Gestion chargement
     if (loading) {
         return (
             <div className="flex items-start justify-center h-screen pt-10">
@@ -74,6 +80,7 @@ const AffichageRecette = () => {
         );
     }
 
+    // Message d'erreur
     if (!recette) return <p>Aucune recette trouvée</p>;
 
     return (

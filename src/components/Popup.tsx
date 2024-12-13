@@ -1,10 +1,12 @@
 import {IPopup} from "../model/popup"
 
+// popup
 const Popup = (props: IPopup) => {
-    // Détermine le style et le titre en fonction du type de popup
+    
     let bgColor = '';
     let title = '';
 
+    // Détermine le style du popup selon son type
     switch (props.type) {
         case 1:
             bgColor = 'bg-yellow-500';

@@ -3,6 +3,8 @@ import { IIngredient, IEtape} from '../model/recette';
 import { modifierRecette, getRecetteById } from '../services/apiService';
 import { useNavigate } from "react-router-dom";
 const FormulaireModification = ({ recetteId }: { recetteId: string }) => {
+
+    // Initiation des variables
     const [titre, setTitre] = useState<string>('');
     const [ingredients, setIngredients] = useState<IIngredient[]>([]);
     const [etapes, setEtapes] = useState<IEtape[]>([]);
@@ -12,6 +14,7 @@ const FormulaireModification = ({ recetteId }: { recetteId: string }) => {
     const [auteur, setAuteur] = useState<string>('Anonyme'); 
     const navigate = useNavigate();
 
+    // On load la recette à modifier
     useEffect(() => {
         getRecetteById(recetteId)
             .then((recette) => {
@@ -27,6 +30,7 @@ const FormulaireModification = ({ recetteId }: { recetteId: string }) => {
             .catch((error) => console.error('Erreur lors du chargement de la recette:', error));
     }, [recetteId]);
 
+    // On s'occupe des changements d'ingrédients
     const handleIngredientChange = (index: number, field: keyof IIngredient, value: string) => {
         const newIngredients = ingredients.map((ingredient, i) =>
             i === index ? { ...ingredient, [field]: value } : ingredient
@@ -34,6 +38,7 @@ const FormulaireModification = ({ recetteId }: { recetteId: string }) => {
         setIngredients(newIngredients);
     };
 
+    // On s'occupe des changements d'étapes
     const handleEtapeChange = (index: number, value: string) => {
         const newEtapes = etapes.map((etape, i) =>
             i === index ? { ...etape, description: value } : etape
@@ -41,6 +46,7 @@ const FormulaireModification = ({ recetteId }: { recetteId: string }) => {
         setEtapes(newEtapes);
     };
 
+    // Envoie du formulaire et validation
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
         const updatedRecette = {
