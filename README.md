@@ -1,6 +1,9 @@
 # AppFinalDev3
 
 
+## Important
+L'application utilise Render avec un abonnement limité, ce qui peut entraîner des délais pour effectuer des actions telles que modifier, ajouter, supprimer ou même afficher des données. Merci !
+
 ## Description
 AppFinalDev3 est une application de cuisine développée dans le cadre du cours de développement web 3. Elle permet aux utilisateurs de s'inscrire, se connecter, et interagir avec des recettes de cuisine. Une fois connectés, les utilisateurs peuvent :
 
