@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { IIngredient, IEtape } from '../model/recette';
+import { IIngredient, IEtape} from '../model/recette';
 import { modifierRecette, getRecetteById } from '../services/apiService';
 import { useNavigate } from "react-router-dom";
 const FormulaireModification = ({ recetteId }: { recetteId: string }) => {
@@ -16,13 +16,13 @@ const FormulaireModification = ({ recetteId }: { recetteId: string }) => {
         getRecetteById(recetteId)
             .then((recette) => {
                 
-                setTitre(recette.recetteTrouver.titre || ''); 
-                setIngredients(recette.recetteTrouver.ingredients || []); 
-                setEtapes(recette.recetteTrouver.etapes || []); 
-                setTempsPreparation(recette.recetteTrouver.tempsPreparation || 0); 
-                setTempsCuisson(recette.recetteTrouver.tempsCuisson || 0); 
-                setPortions(recette.recetteTrouver.portions || 1); 
-                setAuteur(recette.recetteTrouver.auteur || 'Anonyme'); 
+                setTitre(recette.recetteTrouver?.titre || ''); 
+                setIngredients(recette.recetteTrouver?.ingredients || []); 
+                setEtapes(recette.recetteTrouver?.etapes || []); 
+                setTempsPreparation(recette.recetteTrouver?.tempsPreparation || 0); 
+                setTempsCuisson(recette.recetteTrouver?.tempsCuisson || 0); 
+                setPortions(recette.recetteTrouver?.portions || 1); 
+                setAuteur(recette.recetteTrouver?.auteur || 'Anonyme'); 
             })
             .catch((error) => console.error('Erreur lors du chargement de la recette:', error));
     }, [recetteId]);

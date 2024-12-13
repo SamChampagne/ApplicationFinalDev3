@@ -22,3 +22,6 @@ export interface IRecette {
     auteur?: string;
     dateCreation?: string;
 }
+export interface IRecetteApiResponse {
+    recetteTrouver: IRecette | null;
+}

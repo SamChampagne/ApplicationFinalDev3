@@ -1,5 +1,5 @@
 import {  useEffect, useState } from 'react';
-import { IRecette } from '../model/recette';
+import { IRecette, IRecetteApiResponse} from '../model/recette';
 import { useParams, useNavigate } from 'react-router-dom';
 import { getRecetteById, supprimerRecette } from '../services/apiService';
 import FormulaireModification from './FormModification';
@@ -40,9 +40,14 @@ const AffichageRecette = () => {
         const fetchRecette = async () => {
             try {
                 setLoading(true);
-                const fetchedData = await getRecetteById(id!);
+                const fetchedData: IRecetteApiResponse = await getRecetteById(id!);
                 console.log("JSON de la recette :", fetchedData);
-                setRecette(fetchedData.recetteTrouver);
+                
+                if (fetchedData.recetteTrouver) {
+                    setRecette(fetchedData.recetteTrouver); 
+                } else {
+                    setError("Recette non trouvée");
+                }
             } catch (err) {
                 console.error("Erreur lors de la récupération de la recette :", err);
                 setError("Erreur lors de la récupération de la recette");

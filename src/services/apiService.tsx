@@ -1,4 +1,4 @@
-import { IRecette } from '../model/recette';
+import { IRecette, IRecetteApiResponse } from '../model/recette';
 import { Iutilisateur } from '../model/utilisateur';
 const URL = 'https://apifinaldev3.onrender.com/api';
 
@@ -13,7 +13,7 @@ export const getRecettes = async (): Promise<IRecette[]> => {
     
     return data.recettes; 
 };
-export const getRecetteById = async (id: string): Promise<IRecette> => {
+export const getRecetteById = async (id: string): Promise<IRecetteApiResponse> => {
     const token = localStorage.getItem('token');
     const response = await fetch(`${URL}/recette/${id}`, {
         method: 'GET',
@@ -28,7 +28,7 @@ export const getRecetteById = async (id: string): Promise<IRecette> => {
     }
     
     const data = await response.json();
-    return data as IRecette;
+    return data as IRecetteApiResponse;
 };
 export const getRecetteByTitle = async (title: string): Promise<IRecette> => {
     const token = localStorage.getItem('token');
