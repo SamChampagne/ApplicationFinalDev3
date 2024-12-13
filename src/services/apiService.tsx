@@ -13,6 +13,34 @@ export const getRecettes = async (): Promise<IRecette[]> => {
     
     return data.recettes; 
 };
+export const trouverParEmail = async (email: string): Promise<boolean | undefined> => {
+    
+    try{
+        const response = await fetch(`${URL}/utilisateur/email/${email}`, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json', 
+            },
+        });
+        
+        if (!response.ok) {
+            throw new Error('Erreur de connexion à l\'API');
+        }
+    
+        const data = await response.json();
+        
+        console.log(data)
+        if (data.utilisateur !== undefined) {
+            
+            return data.utilisateur
+        }
+    }catch(erreur){
+        throw new Error('Réponse API inattendue');
+    }
+    
+
+
+};
 export const getRecetteById = async (id: string): Promise<IRecetteApiResponse> => {
     const token = localStorage.getItem('token');
     const response = await fetch(`${URL}/recette/${id}`, {
