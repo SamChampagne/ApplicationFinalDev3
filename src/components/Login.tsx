@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Iutilisateur } from '../model/utilisateur';
 import { trouverParEmail } from '../services/apiService';
-
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
 
@@ -9,7 +9,7 @@ const Login = () => {
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [errorMessage, setErrorMessage] = useState(''); // État pour gérer l'erreur
-
+    const navigate = useNavigate();
     // Gestion de la connexion
     const handleLogin = async (e: React.FormEvent) => {
         e.preventDefault();
@@ -61,7 +61,7 @@ const Login = () => {
         localStorage.setItem('token', token);
     
         // sa recharge la page aussi
-        window.location.href = '/'; 
+        navigate("/");
         } catch (error) {
             console.log(error)
             setErrorMessage('Une erreur est survenue. Veuillez réessayer plus tard.');
