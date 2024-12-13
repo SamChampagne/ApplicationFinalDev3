@@ -32,6 +32,9 @@ Assurez-vous d'avoir installé les éléments suivants sur votre machine :
 1. Clonez le projet depuis GitHub :
    ```bash
    git clone https://github.com/votre-utilisateur/AppFinalDev3.git
-2. Lancer l'application :
+2. Installer les dépendances
+    ```bash
+   npm install
+3. Lancer l'application :
    ```bash
    npm run dev
