@@ -14,6 +14,8 @@ AppFinalDev3 est une application de cuisine développée dans le cadre du cours 
 
 ## Accès
 
+Voici un compte fonctionnel nom: Sam et email samolichampagne@icloud.com
+
 L'application est déployer avec netlify à l'adresse suivante : https://applicationfinaldev3.netlify.app
 
 L'application interagit avec une API externe (hébergée dans un autre dépôt GitHub) pour gérer les données des recettes.
